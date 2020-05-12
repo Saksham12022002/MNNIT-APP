@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A5284E5A"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context=".login">
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imageView2"-->
+    <!--        android:layout_width="150dp"-->
+    <!--        android:layout_height="175dp"-->
+    <!--        android:layout_alignParentTop="true"-->
+    <!--        android:layout_centerHorizontal="true"-->
+    <!--        android:layout_marginTop="70dp"-->
+    <!--        android:visibility="visible"-->
+    <!--        app:srcCompat="@drawable/logo" />-->
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/galindo"
+        android:text="MNNIT CENTRAL WELCOMES YOU !"
+        android:textSize="35sp" />
+
+
+    <TextView
+        android:id="@+id/slogan_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/galindo"
+        android:text="Register to continue"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/ic_action_name"
+        android:ems="10"
+        android:hint="USERNAME"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/fullname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/ic_action_name"
+        android:ems="10"
+        android:hint="FULL NAME"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_action_mail"
+        android:ems="10"
+        android:hint="EMAIL ID"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20sp" />
+
+<!--    <EditText-->
+<!--        android:id="@+id/pass"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginLeft="0dp"-->
+<!--        -->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:drawableLeft="@drawable/ic_action_password"-->
+<!--        android:ems="10"-->
+<!--        android:hint="PASSWORD"-->
+<!--        android:inputType="textPassword"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textColorHint="#FFFFFF"-->
+<!--        android:textSize="20sp" />-->
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_action_phone"
+        android:ems="10"
+        android:hint="MOBILE "
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_action_password"
+        android:ems="10"
+        android:hint="PASSWORD"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20sp" />
+
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="#000"
+        android:text="REGISTER"
+        android:textColor="#fff" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_margin="5dp"
+        android:background="#00000000"
+        android:elevation="0dp"
+        android:id="@+id/button5"
+        android:text="LOGIN"
+        android:textColor="#000" />
+
+    <!--    <androidx.cardview.widget.CardView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content" />-->
+
+    <!--    <androidx.cardview.widget.CardView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content" />-->
+</LinearLayout>
