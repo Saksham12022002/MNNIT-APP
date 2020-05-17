@@ -14,6 +14,19 @@ import android.widget.Toast;
 public class nextactivity extends AppCompatActivity {
 
     TextView welcome;
+//    final String name=getIntent().getStringExtra("name");
+//    final String phone=getIntent().getStringExtra("phone");
+
+
+
+//    public static String _utfValue = "";
+//    public static String _phone="";
+//
+//    void sendValue(){
+//        _utfValue  = name;
+//        _phone= phone;
+//    }
+//
     Button lost;
 
     private long backpress;
@@ -27,6 +40,16 @@ public class nextactivity extends AppCompatActivity {
         setContentView(R.layout.activity_nextactivity);
         final String name=getIntent().getStringExtra("name");
 
+//        Intent intent= new Intent(nextactivity.this,ImageAdapter.class);
+//        intent.putExtra("name",name);
+//        intent.putExtra("phone",getIntent().getStringExtra("phone"));
+//        intent.putExtra("mail",getIntent().getStringExtra("mail"));
+
+
+
+
+
+
         welcome=findViewById(R.id.textView);
         welcome.setText("Hello "+getIntent().getStringExtra("name")+"\nWelcome to Help Out \n How can we help you ?");
 
@@ -34,8 +57,10 @@ public class nextactivity extends AppCompatActivity {
         lost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(nextactivity.this,lost_0.class);
+                Intent intent = new Intent(nextactivity.this,all_lost_items.class);
                 intent.putExtra("name",name);
+                intent.putExtra("phone",getIntent().getStringExtra("phone"));
+                intent.putExtra("mail",getIntent().getStringExtra("mail"));
                 startActivity(intent);
             }
         });

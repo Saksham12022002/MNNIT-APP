@@ -54,21 +54,30 @@ public class signup extends AppCompatActivity {
                 String passwd = pass.getText().toString();
 
 
+                if (username.isEmpty() || fullname.isEmpty() || mail.isEmpty()||phone.isEmpty()||passwd.isEmpty() ){
+                    Toast.makeText(signup.this, "PLEASE FILL ALL DETAILS !", Toast.LENGTH_SHORT).show();
+                }
 
+
+                else {
                 userslist users = new userslist(username,fullname,mail,phone,passwd);
 
 
 
-              reff.child(mail).setValue(users);
+              reff.child(phone).setValue(users);
 
-                Toast.makeText(signup.this, "Login Successfull ...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(signup.this, "Registration Successfull ...", Toast.LENGTH_SHORT).show();
+
 
                 Intent next=new Intent(signup.this,nextactivity.class);
+                    next.putExtra("name",fullname);
+                    next.putExtra("phone",phone);
+                    next.putExtra("mail",mail);
                 startActivity(next);
-                recreate();
+                finish();
 
 
-        }
+        }}
 
 
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_name"
+            android:text="item"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <TextView
+            android:id="@+id/item_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="decription"
+            android:layout_marginTop="19dp"
+            android:textColor="@android:color/black"
+            android:textSize="25sp" />
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/display"/>
+
+<!--        <TextView-->
+<!--            android:id="@+id/contact"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:text="contact"-->
+<!--            android:layout_marginTop="19dp"-->
+<!--            android:textColor="@android:color/black"-->
+<!--            android:textSize="25sp" />-->
+
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

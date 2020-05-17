@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:fontFamily="@font/galindo"
-                android:text="MNNIT CENTRAL WELCOMES YOU !"
+                android:text="HELP OUT WELCOMES YOU !"
                 android:textSize="35sp" />
 
 
