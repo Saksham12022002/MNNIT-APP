@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +29,7 @@ public class all_lost_items extends AppCompatActivity {
     private List<uploadimage> muploads;
     ImageButton uploadnew;
     Button myuploads;
+    TextView message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class all_lost_items extends AppCompatActivity {
         setContentView(R.layout.activity_all_lost_items);
         uploadnew = findViewById(R.id.uploadnew);
         myuploads=findViewById(R.id.button3);
+        message=findViewById(R.id.messagenoupload);
 
         recyclerView = findViewById(R.id.recycler_view);
         final String name=getIntent().getStringExtra("name");
@@ -66,7 +69,7 @@ public class all_lost_items extends AppCompatActivity {
 
         imageAdapter = new ImageAdapter(all_lost_items.this, muploads);
         recyclerView.setAdapter(imageAdapter);
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("uploads");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("uploads").child("lost uploads");
 
 
 
@@ -80,7 +83,12 @@ public class all_lost_items extends AppCompatActivity {
                         uploadimage upload = postsnapshot.getValue(uploadimage.class);
                         muploads.add(upload);
                     }
+                    if (muploads.size() != 0) {
                         imageAdapter.notifyDataSetChanged();
+                    }
+                    else{
+                        message.setAlpha(1);
+                    }
 
                 }
 

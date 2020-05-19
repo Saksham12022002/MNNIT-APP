@@ -22,7 +22,8 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class my_lost_items extends AppCompatActivity implements Image_Adapter_2.OnItemClickListener {
+public class my_found_items extends AppCompatActivity implements Image_Adapter_2.OnItemClickListener{
+
     private RecyclerView recyclerView;
     private FirebaseStorage storage;
     private DatabaseReference databaseReference,mdatabase;
@@ -34,7 +35,7 @@ public class my_lost_items extends AppCompatActivity implements Image_Adapter_2.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_lost_items);
+        setContentView(R.layout.activity_my_found_items);
 
         message = findViewById(R.id.messagenoupload);
 
@@ -46,15 +47,13 @@ public class my_lost_items extends AppCompatActivity implements Image_Adapter_2.
 
 
         muploads = new ArrayList<>();
-        mdatabase = FirebaseDatabase.getInstance().getReference("uploads").child("lost uploads");
+        mdatabase = FirebaseDatabase.getInstance().getReference("uploads").child("found uploads");
         storage = FirebaseStorage.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("users")
                 .child(phone)
-                .child("lost_uploads");
+                .child("found uploads");
 
-
-
-       databaselistener= databaseReference.addValueEventListener(new ValueEventListener() {
+        databaselistener= databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -63,23 +62,27 @@ public class my_lost_items extends AppCompatActivity implements Image_Adapter_2.
                     upload.setKey(postsnapshot.getKey());
                     muploads.add(upload);
                 }
+
                 if (muploads.size() == 0) {
 
                     message.setAlpha(1);
                 }
+//                else{
+//
+//                }
 
 
-                imageAdapter = new Image_Adapter_2(my_lost_items.this, muploads);
+                imageAdapter = new Image_Adapter_2(my_found_items.this, muploads);
 
                 recyclerView.setAdapter(imageAdapter);
 
-                imageAdapter.setOnItemClickListener(my_lost_items.this);
+                imageAdapter.setOnItemClickListener(my_found_items.this);
 
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(my_lost_items.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(my_found_items.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -92,9 +95,7 @@ public class my_lost_items extends AppCompatActivity implements Image_Adapter_2.
 
     @Override
     public void OnEditClick(int position) {
-
         Toast.makeText(this, "EditClick at position " + position, Toast.LENGTH_SHORT).show();
-
     }
 
     @Override
@@ -108,21 +109,19 @@ public class my_lost_items extends AppCompatActivity implements Image_Adapter_2.
             public void onSuccess(Void aVoid) {
                 databaseReference.child(selectedKey).removeValue();
                 mdatabase.child(selectedKey).removeValue();
-                Toast.makeText(my_lost_items.this, "Item Deleted ...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(my_found_items.this, "Item Deleted ...", Toast.LENGTH_SHORT).show();
                 recreate();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(my_lost_items.this,e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(my_found_items.this,e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
 
 
-
-       }
-
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();

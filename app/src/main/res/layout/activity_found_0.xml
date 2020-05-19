@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#A5284E5A"
     tools:context=".lost_0">
 
@@ -13,15 +12,14 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="158dp"
-        android:layout_marginEnd="165dp"
+        android:layout_marginBottom="10dp"
         android:text="Upload here"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.379"
         app:layout_constraintStart_toStartOf="parent"
 
         />
+
 
     <TextView
         android:id="@+id/textView3"
@@ -52,7 +50,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText5"
         app:layout_constraintVertical_bias="1.0"
@@ -83,7 +81,7 @@
         android:layout_marginTop="40dp"
         android:ems="10"
         android:gravity="center"
-        android:hint="Name The Item you have Lost"
+        android:hint="Name The Item you have Found"
         android:inputType="textPersonName"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -92,12 +90,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <ProgressBar
-        android:id="@+id/progressBar5"
+        android:id="@+id/progressBar4"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="4dp"
         android:alpha="0"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"

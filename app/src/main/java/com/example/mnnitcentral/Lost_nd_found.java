@@ -32,6 +32,18 @@ public class Lost_nd_found extends AppCompatActivity {
             }
         });
 
+        found.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Lost_nd_found.this,all_found_items.class);
+                intent.putExtra("name",name);
+                intent.putExtra("phone",getIntent().getStringExtra("phone"));
+                intent.putExtra("mail",getIntent().getStringExtra("mail"));
+                startActivity(intent);
+
+            }
+        });
+
 
 
 

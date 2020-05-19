@@ -7,11 +7,14 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="Help Out"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".all_found_items"></activity>
+        <activity android:name=".food_menu"></activity>
+        <activity android:name=".my_found_items" />
+        <activity android:name=".found_0" />
+        <activity android:name=".all_found_items" />
         <activity android:name=".my_lost_items" />
         <activity android:name=".Lost_nd_found" />
         <activity android:name=".forget_pass" />

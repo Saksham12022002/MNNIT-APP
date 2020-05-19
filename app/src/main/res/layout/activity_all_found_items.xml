@@ -1,9 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".all_found_items">
+    android:background="#A5284E5A"
+    tools:context=".all_lost_items">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageButton
+        android:id="@+id/uploadnew"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="299dp"
+        android:layout_marginTop="650dp"
+
+
+        android:background="#00000000"
+        android:backgroundTint="#A5284E5A"
+        android:scaleType="fitCenter"
+        android:src="@drawable/upload_web" />
+
+    <TextView
+        android:id="@+id/messagenoupload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:alpha="0"
+        android:gravity="center"
+        android:text="NO UPLOADS TO SHOW"
+        android:textSize="30sp"
+        android:visibility="visible" />
+
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="675dp"
+        android:background="#00000000"
+        android:text="My Uploads"
+        android:textColor="#454242"
+        android:textSize="25sp"
+
+        />
+
+
+</RelativeLayout>

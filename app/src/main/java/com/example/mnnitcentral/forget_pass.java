@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ import java.util.concurrent.TimeUnit;
 public class forget_pass extends AppCompatActivity {
     String codesent;
     Button verify_otp;
+    ProgressBar progressBar;
     EditText enter_otp;
     TextView resend_otp,welcome_message;
 
@@ -40,6 +42,7 @@ public class forget_pass extends AppCompatActivity {
         enter_otp=findViewById(R.id.editText7);
 //        resend_otp=findViewById(R.id.textView4);
         welcome_message=findViewById(R.id.textView5);
+        progressBar=findViewById(R.id.progressBar);
 
         String phoneno = getIntent().getStringExtra("phone");
         welcome_message.setText("OTP Sent to Your Number "+phoneno);
@@ -87,6 +90,8 @@ public class forget_pass extends AppCompatActivity {
         public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                 String codebyuser = phoneAuthCredential.getSmsCode();
                 if (codebyuser!=null){
+                    progressBar.setVisibility(View.VISIBLE);
+                    verify_otp.setVisibility(View.INVISIBLE);
                     verifycode(codebyuser);
                 }
         }

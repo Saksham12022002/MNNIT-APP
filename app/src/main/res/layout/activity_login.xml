@@ -8,7 +8,8 @@
     android:background="#A5284E5A"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context=".login">
+    tools:context=".login"
+    >
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -90,12 +91,19 @@
                 android:elevation="0dp"
                 android:text="Forget Password?" />
 
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:alpha="0"
+                android:layout_height="wrap_content" />
+
             <Button
                 android:id="@+id/login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
                 android:background="#000"
                 android:text="LOGIN"
                 android:textColor="#fff" />
@@ -110,6 +118,8 @@
                 android:elevation="0dp"
                 android:text="New User? REGISTER"
                 android:textColor="#000" />
+
+
 
         </LinearLayout>
     </ScrollView>

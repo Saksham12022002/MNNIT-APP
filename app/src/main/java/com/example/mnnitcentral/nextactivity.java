@@ -29,7 +29,7 @@ public class nextactivity extends AppCompatActivity {
 //    }
 //
 //    Button lost;
-    ImageView lostndfound;
+    ImageView lostndfound,foodmenu;
     ImageAdapter imgadapt;
 
     private long backpress;
@@ -58,6 +58,18 @@ public class nextactivity extends AppCompatActivity {
 
 //        lost=findViewById(R.id.lost);
         lostndfound=findViewById(R.id.imageView2);
+        foodmenu=findViewById(R.id.imageView4);
+        foodmenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(nextactivity.this,food_menu.class);
+                intent.putExtra("name",name);
+                intent.putExtra("phone",getIntent().getStringExtra("phone"));
+                intent.putExtra("mail",getIntent().getStringExtra("mail"));
+                startActivity(intent);
+            }
+        });
+
         lostndfound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class signup extends AppCompatActivity {
     Button b1,b2;
+    ProgressBar progressBar;
     EditText user,name,email,pass,number;
     FirebaseDatabase database;
     DatabaseReference reff;
@@ -37,10 +39,15 @@ public class signup extends AppCompatActivity {
         email=findViewById(R.id.email);
         number=findViewById(R.id.editText3);
         pass=findViewById(R.id.editText4);
+        progressBar=findViewById(R.id.progressBar3);
 
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                progressBar.setAlpha(1);
+                b1.setAlpha(0);
+                b2.setAlpha(0);
 
                 database = FirebaseDatabase.getInstance();
                 reff = database.getReference("users");
@@ -55,6 +62,9 @@ public class signup extends AppCompatActivity {
 
 
                 if (username.isEmpty() || fullname.isEmpty() || mail.isEmpty()||phone.isEmpty()||passwd.isEmpty() ){
+                    progressBar.setAlpha(0);
+                    b1.setAlpha(1);
+                    b2.setAlpha(1);
                     Toast.makeText(signup.this, "PLEASE FILL ALL DETAILS !", Toast.LENGTH_SHORT).show();
                 }
 

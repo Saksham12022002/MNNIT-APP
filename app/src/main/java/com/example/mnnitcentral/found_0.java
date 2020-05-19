@@ -11,7 +11,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,32 +29,32 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
-public class lost_0 extends AppCompatActivity {
+public class found_0 extends AppCompatActivity {
+
     TextView message;
     private static final int PICK_USER_IMAGE = 1;
     Button select,upload;
     ImageView imageView;
     EditText description,item_name;
     Uri imageurl;
-    ProgressBar progressBar;
     private StorageReference mStorageRef;
+    ProgressBar progressBar;
     private DatabaseReference mDatabaseRef;
     private DatabaseReference databaseReference;
     private StorageTask muploadtask;
 
 
     @SuppressLint({"SetTextI18n", "ClickableViewAccessibility"})
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_lost_0);
+        setContentView(R.layout.activity_found_0);
 
         message = findViewById(R.id.textView3);
         item_name=findViewById(R.id.editText6);
-        progressBar = findViewById(R.id.progressBar5);
         final String phone = getIntent().getStringExtra("phone");
 
 
@@ -64,11 +63,12 @@ public class lost_0 extends AppCompatActivity {
 
         message.setText("Hey "+getIntent().getStringExtra("name")+"\nWe are sorry for your loss 😔\nBut you can find it here very soon 😃?");
         upload = findViewById(R.id.button);
+        progressBar=findViewById(R.id.progressBar4);
         String user = getIntent().getStringExtra("mail");
         imageView=findViewById(R.id.imageView3);
         description=findViewById(R.id.editText5);
 
-        mStorageRef = FirebaseStorage.getInstance().getReference("uploads").child("lost");
+        mStorageRef = FirebaseStorage.getInstance().getReference("uploads").child("found");
         mDatabaseRef= FirebaseDatabase.getInstance().getReference("users");//.child(user);
         databaseReference = FirebaseDatabase.getInstance().getReference("uploads");
 
@@ -87,11 +87,6 @@ public class lost_0 extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,7 +100,8 @@ public class lost_0 extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (muploadtask !=null && muploadtask.isInProgress()){
-                    Toast.makeText(lost_0.this, "Please wait while file is bieng uploaded", Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(found_0.this, "Please wait while file is bieng uploaded", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
@@ -119,9 +115,6 @@ public class lost_0 extends AppCompatActivity {
             }
         });
 
-
-
-
     }
 
     private String get_extension(Uri uri){
@@ -133,8 +126,10 @@ public class lost_0 extends AppCompatActivity {
 
     private void uploadfile() {
         if (imageurl != null){
+
             progressBar.setAlpha(1);
             upload.setAlpha(0);
+
             final String item = item_name.getText().toString().trim();
             final String mail = getIntent().getStringExtra("mail");
             String key = mDatabaseRef.push().getKey();
@@ -144,7 +139,7 @@ public class lost_0 extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    Toast.makeText(lost_0.this, "Upload Successful", Toast.LENGTH_LONG).show();
+                    Toast.makeText(found_0.this, "Upload Successful", Toast.LENGTH_LONG).show();
                     String s1 = description.getText().toString().trim();
                     String s2 = item_name.getText().toString().trim();
 
@@ -157,31 +152,21 @@ public class lost_0 extends AppCompatActivity {
                     uploadimage extra = new uploadimage(s2,s1,downloadurl.toString());
                     String key = mDatabaseRef.push().getKey();
                     assert key != null;
-                    databaseReference.child("lost uploads").child(key).setValue(extra);
-                    mDatabaseRef.child(phone).child("lost_uploads").child(key).setValue(extra);
-                    Intent i = new Intent(lost_0.this,all_lost_items.class);
+                    databaseReference.child("found uploads").child(key).setValue(extra);
+                    mDatabaseRef.child(phone).child("found uploads").child(key).setValue(extra);
+                    Intent i = new Intent(found_0.this,all_found_items.class);
                     startActivity(i);
                     finish();
-
-//                    uploadimage extras = new uploadimage(s2,s1,taskSnapshot.getUploadSessionUri().toString());
-//                    String key = mDatabaseRef.push().getKey();
-//                    mDatabaseRef.child(phone).child(key).setValue(extras);
-//                    databaseReference.child(key).setValue(extras);
-//                    Intent intent = new Intent(lost_0.this,all_lost_items.class);
-//                    intent.putExtra("name",getIntent().getStringExtra("name"));
-//                    intent.putExtra("phone",getIntent().getStringExtra("phone"));
-//                    intent.putExtra("mail",getIntent().getStringExtra("mail"));
-//                    startActivity(intent);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(lost_0.this,e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(found_0.this,e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
-//                    Toast.makeText(lost_0.this, "File is Uploading", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(found_0.this, "File is Uploading", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -189,6 +174,7 @@ public class lost_0 extends AppCompatActivity {
 
         }
         else{
+
             Toast.makeText(this, "Plesase Select a File ...", Toast.LENGTH_SHORT).show();
         }
 
@@ -209,4 +195,7 @@ public class lost_0 extends AppCompatActivity {
             imageView.setImageURI(imageurl);
         }
     }
+
+
+
 }
