@@ -9,6 +9,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
@@ -43,7 +44,7 @@ public class lost_0 extends AppCompatActivity {
     private StorageTask muploadtask;
 
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "ClickableViewAccessibility"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +59,7 @@ public class lost_0 extends AppCompatActivity {
 
         final String mail = getIntent().getStringExtra("mail");
 
-        message.setText("Hey "+getIntent().getStringExtra("name")+"\nWe are sorry for your loss 😔\nBut you can find it here very soon 😃? "+phone+"  "+mail);
+        message.setText("Hey "+getIntent().getStringExtra("name")+"\nWe are sorry for your loss 😔\nBut you can find it here very soon 😃?");
         upload = findViewById(R.id.button);
         String user = getIntent().getStringExtra("mail");
         imageView=findViewById(R.id.imageView3);
@@ -67,6 +68,21 @@ public class lost_0 extends AppCompatActivity {
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
         mDatabaseRef= FirebaseDatabase.getInstance().getReference("users");//.child(user);
         databaseReference = FirebaseDatabase.getInstance().getReference("uploads");
+
+        description.setOnTouchListener(new View.OnTouchListener() {
+
+            public boolean onTouch(View v, MotionEvent event) {
+                if (description.hasFocus()) {
+                    v.getParent().requestDisallowInterceptTouchEvent(true);
+                    switch (event.getAction() & MotionEvent.ACTION_MASK){
+                        case MotionEvent.ACTION_SCROLL:
+                            v.getParent().requestDisallowInterceptTouchEvent(false);
+                            return true;
+                    }
+                }
+                return false;
+            }
+        });
 
 
 
@@ -133,20 +149,21 @@ public class lost_0 extends AppCompatActivity {
                     while (!uriTask.isSuccessful());
                     Uri downloadurl = uriTask.getResult();
                     assert downloadurl != null;
-                    uploadimage extra = new uploadimage(s1,s2,downloadurl.toString());
+                    uploadimage extra = new uploadimage(s2,s1,downloadurl.toString());
                     String key = mDatabaseRef.push().getKey();
                     assert key != null;
                     databaseReference.child(key).setValue(extra);
+                    mDatabaseRef.child(phone).child("lost_uploads").child(key).setValue(extra);
 
 //                    uploadimage extras = new uploadimage(s2,s1,taskSnapshot.getUploadSessionUri().toString());
 //                    String key = mDatabaseRef.push().getKey();
 //                    mDatabaseRef.child(phone).child(key).setValue(extras);
 //                    databaseReference.child(key).setValue(extras);
-                    Intent intent = new Intent(lost_0.this,all_lost_items.class);
-                    intent.putExtra("name",getIntent().getStringExtra("name"));
-                    intent.putExtra("phone",getIntent().getStringExtra("phone"));
-                    intent.putExtra("mail",getIntent().getStringExtra("mail"));
-                    startActivity(intent);
+//                    Intent intent = new Intent(lost_0.this,all_lost_items.class);
+//                    intent.putExtra("name",getIntent().getStringExtra("name"));
+//                    intent.putExtra("phone",getIntent().getStringExtra("phone"));
+//                    intent.putExtra("mail",getIntent().getStringExtra("mail"));
+//                    startActivity(intent);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override

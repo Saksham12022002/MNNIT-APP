@@ -68,6 +68,7 @@ public class login extends AppCompatActivity {
                                 Intent intent = new Intent(login.this, nextactivity.class);
                                 intent.putExtra("name", name);
                                 intent.putExtra("phone", phone);
+                                intent.putExtra("passwd",storedpasswd);
                                 intent.putExtra("mail", mail);
                                 startActivity(intent);
                                 finish();
@@ -96,6 +97,49 @@ public class login extends AppCompatActivity {
                 Intent i=new Intent(login.this,signup.class);
                 startActivity(i);
                 finish();
+
+            }
+        });
+
+        forget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                final String number=user.getText().toString().trim();
+                final String passwd = pass.getText().toString().trim();
+                Query check =ref.orderByChild("number").equalTo(number);
+
+                check.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        if (dataSnapshot.exists()) {
+                            String storedpasswd = (dataSnapshot.child(number).child("passwd").getValue(String.class));
+                            String name = (dataSnapshot.child(number).child("fullname").getValue(String.class));
+
+                            String phone = (dataSnapshot.child(number).child("number").getValue(String.class));
+                            String mail = (dataSnapshot.child(number).child("email").getValue(String.class));
+
+                            Intent intent = new Intent(login.this, forget_pass.class);
+                            intent.putExtra("name", name);
+                            intent.putExtra("phone", phone);
+                            intent.putExtra("mail", mail);
+                            startActivity(intent);
+
+
+                        } else {
+                            Toast.makeText(login.this, "User don't exists !   Register Please ...", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
 
             }
         });

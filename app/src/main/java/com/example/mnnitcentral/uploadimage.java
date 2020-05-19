@@ -4,6 +4,7 @@ public class uploadimage{
 
     private String name;
     private String desc;
+    private String key;
     private  String imageurl;
 
     public uploadimage() {
@@ -14,6 +15,7 @@ public class uploadimage{
         this.name = name;
         this.desc=desc;
         this.imageurl=imageurl;
+
 
 
     }
@@ -40,5 +42,13 @@ public class uploadimage{
 
     public void setImageurl(String imageurl) {
         this.imageurl = imageurl;
+    }
+
+    public String getKey() {
+        return this.key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

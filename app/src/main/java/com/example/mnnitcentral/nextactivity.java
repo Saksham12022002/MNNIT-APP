@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +28,9 @@ public class nextactivity extends AppCompatActivity {
 //        _phone= phone;
 //    }
 //
-    Button lost;
+//    Button lost;
+    ImageView lostndfound;
+    ImageAdapter imgadapt;
 
     private long backpress;
     private Toast backtoast;
@@ -53,11 +56,12 @@ public class nextactivity extends AppCompatActivity {
         welcome=findViewById(R.id.textView);
         welcome.setText("Hello "+getIntent().getStringExtra("name")+"\nWelcome to Help Out \n How can we help you ?");
 
-        lost=findViewById(R.id.lost);
-        lost.setOnClickListener(new View.OnClickListener() {
+//        lost=findViewById(R.id.lost);
+        lostndfound=findViewById(R.id.imageView2);
+        lostndfound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(nextactivity.this,all_lost_items.class);
+                Intent intent = new Intent(nextactivity.this,Lost_nd_found.class);
                 intent.putExtra("name",name);
                 intent.putExtra("phone",getIntent().getStringExtra("phone"));
                 intent.putExtra("mail",getIntent().getStringExtra("mail"));

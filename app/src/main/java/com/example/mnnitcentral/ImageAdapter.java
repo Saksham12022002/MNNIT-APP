@@ -3,7 +3,10 @@ package com.example.mnnitcentral;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,8 +21,8 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
-//    final String name= nextactivity._utfValue;
-//    final String phone =nextactivity._phone;
+//    private final String name=
+//    private final String phone =
     private Context mcontext;
     private List<uploadimage> muploads;
     public ImageAdapter(Context context,List<uploadimage> uploads){
@@ -48,9 +51,10 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         uploadimage upload = muploads.get(position);
         holder.textViewname.setText(upload.getName());
         holder.textViewdesc.setText(upload.getDesc());
-        Picasso.with(mcontext).load(upload.getImageurl()).placeholder(R.mipmap.ic_launcher_round).fit().centerCrop().into(holder.imageView);
-
 //        holder.textViewcontact.setText("Please Contact "+name+" at "+phone);
+        Picasso.with(mcontext).load(upload.getImageurl()).placeholder(R.mipmap.ic_launcher_round).fit().centerInside().into(holder.imageView);
+
+
 
 
 
@@ -61,7 +65,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         return muploads.size();
     }
 
-    public class ImageViewHolder extends RecyclerView.ViewHolder{
+    public class ImageViewHolder extends RecyclerView.ViewHolder  {
 
         public TextView textViewname,textViewdesc,textViewcontact;
         public ImageView imageView;
@@ -72,8 +76,12 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
             textViewname= itemView.findViewById(R.id.item_name);
             imageView=itemView.findViewById(R.id.display);
             textViewdesc= itemView.findViewById(R.id.item_desc);
-//            textViewcontact=itemView.findViewById(R.id.contact);
+            textViewcontact=itemView.findViewById(R.id.contact);
+
+
 
         }
     }
+
+
 }
