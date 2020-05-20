@@ -45,10 +45,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="675dp"
-        android:background="#00000000"
+        android:background="@drawable/button_border"
+
         android:text="My Uploads"
-        android:textColor="#454242"
+        android:textColor="#222120"
         android:textSize="25sp"
+
 
         />
 

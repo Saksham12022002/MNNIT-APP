@@ -93,7 +93,7 @@ public class my_lost_items extends AppCompatActivity implements Image_Adapter_2.
     @Override
     public void OnEditClick(int position) {
 
-        Toast.makeText(this, "EditClick at position " + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Function in Progress.....", Toast.LENGTH_SHORT).show();
 
     }
 

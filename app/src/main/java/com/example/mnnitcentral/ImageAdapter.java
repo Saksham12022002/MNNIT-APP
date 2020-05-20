@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,6 +52,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         uploadimage upload = muploads.get(position);
         holder.textViewname.setText(upload.getName());
         holder.textViewdesc.setText(upload.getDesc());
+        holder.textViewcontact.setText("Contact "+upload.get_name()+" on "+upload.get_phone());
+
 //        holder.textViewcontact.setText("Please Contact "+name+" at "+phone);
         Picasso.with(mcontext).load(upload.getImageurl()).placeholder(R.mipmap.ic_launcher_round).fit().centerInside().into(holder.imageView);
 

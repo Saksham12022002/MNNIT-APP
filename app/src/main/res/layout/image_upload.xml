@@ -2,48 +2,67 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_margin="8dp"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:background="#A5082A35"
+        android:layout_height="match_parent"
+        android:background="#A502232E"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/item_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="item"
-            android:textColor="@android:color/black"
-            android:textSize="25sp" />
 
-        <TextView
-            android:id="@+id/item_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="19dp"
-            android:text="decription"
-            android:textColor="@android:color/black"
-            android:textSize="25sp" />
-
-        <ImageView
-            android:id="@+id/display"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
-
-        <TextView
-            android:id="@+id/contact"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="19dp"
-            android:text="contact"
-            android:textColor="@android:color/black"
-            android:textSize="25sp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:text="item"
+                android:textColor="@android:color/white"
+                android:textSize="25sp" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp">
+
+                <TextView
+                    android:id="@+id/item_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center"
+                    android:text="decription"
+                    android:textColor="@android:color/white"
+                    android:textSize="25sp" />
+            </ScrollView>
+
+            <ImageView
+                android:id="@+id/display"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="25dp" />
+
+            <TextView
+                android:id="@+id/contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:text="contact"
+                android:textColor="@android:color/white"
+                android:textSize="25sp" />
+        </LinearLayout>
 
 
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>

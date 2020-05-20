@@ -36,7 +36,7 @@ public class found_0 extends AppCompatActivity {
     private static final int PICK_USER_IMAGE = 1;
     Button select,upload;
     ImageView imageView;
-    EditText description,item_name;
+    EditText description,item_name,user_name,user_phone;
     Uri imageurl;
     private StorageReference mStorageRef;
     ProgressBar progressBar;
@@ -53,20 +53,21 @@ public class found_0 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_found_0);
 
-        message = findViewById(R.id.textView3);
-        item_name=findViewById(R.id.editText6);
+        message = findViewById(R.id.textView6);
+        item_name=findViewById(R.id.editText9);
+//        user_name=findViewById(R.id.editText11);
+//        user_phone=findViewById(R.id.editText12);
         final String phone = getIntent().getStringExtra("phone");
 
 
 
         final String mail = getIntent().getStringExtra("mail");
 
-        message.setText("Hey "+getIntent().getStringExtra("name")+"\nWe are sorry for your loss 😔\nBut you can find it here very soon 😃?");
-        upload = findViewById(R.id.button);
-        progressBar=findViewById(R.id.progressBar4);
-        String user = getIntent().getStringExtra("mail");
+        message.setText("Hey "+getIntent().getStringExtra("name")+"\nIt Always feels good to help Someone 🙂");
+        upload = findViewById(R.id.button4);
+        progressBar=findViewById(R.id.progressBar5);
         imageView=findViewById(R.id.imageView3);
-        description=findViewById(R.id.editText5);
+        description=findViewById(R.id.editText10);
 
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads").child("found");
         mDatabaseRef= FirebaseDatabase.getInstance().getReference("users");//.child(user);
@@ -139,21 +140,31 @@ public class found_0 extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    Toast.makeText(found_0.this, "Upload Successful", Toast.LENGTH_LONG).show();
+
                     String s1 = description.getText().toString().trim();
                     String s2 = item_name.getText().toString().trim();
 
+                    if (s1.equals("")){
+                        s1 = "No Description given";
+                    }
+                    if (s2.equals("")){
+                        s2="No Name Given";
+                    }
+
+
                     final String phone = getIntent().getStringExtra("phone");
+                    final String name = getIntent().getStringExtra("name");
 
                     Task<Uri> uriTask=taskSnapshot.getStorage().getDownloadUrl();
                     while (!uriTask.isSuccessful());
                     Uri downloadurl = uriTask.getResult();
                     assert downloadurl != null;
-                    uploadimage extra = new uploadimage(s2,s1,downloadurl.toString());
+                    uploadimage extra = new uploadimage(s2,s1,downloadurl.toString(),name,phone);
                     String key = mDatabaseRef.push().getKey();
                     assert key != null;
                     databaseReference.child("found uploads").child(key).setValue(extra);
                     mDatabaseRef.child(phone).child("found uploads").child(key).setValue(extra);
+                    Toast.makeText(found_0.this, "Upload Successful", Toast.LENGTH_LONG).show();
                     Intent i = new Intent(found_0.this,all_found_items.class);
                     startActivity(i);
                     finish();

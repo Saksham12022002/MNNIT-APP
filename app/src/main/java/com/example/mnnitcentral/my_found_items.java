@@ -95,7 +95,7 @@ public class my_found_items extends AppCompatActivity implements Image_Adapter_2
 
     @Override
     public void OnEditClick(int position) {
-        Toast.makeText(this, "EditClick at position " + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Function In Progress.....", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -103,11 +103,12 @@ public class my_found_items extends AppCompatActivity implements Image_Adapter_2
 
         uploadimage selectedItem = muploads.get(position);
         final String selectedKey = selectedItem.getKey();
-        StorageReference imageref = storage.getReferenceFromUrl(selectedItem.getImageurl());
+        final StorageReference imageref = storage.getReferenceFromUrl(selectedItem.getImageurl());
         imageref.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 databaseReference.child(selectedKey).removeValue();
+
                 mdatabase.child(selectedKey).removeValue();
                 Toast.makeText(my_found_items.this, "Item Deleted ...", Toast.LENGTH_SHORT).show();
                 recreate();

@@ -1,5 +1,6 @@
 package com.example.mnnitcentral;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -37,11 +38,13 @@ public class Image_Adapter_2 extends RecyclerView.Adapter<Image_Adapter_2.ImageV
         return new ImageViewHolder(v);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
 
         uploadimage upload = muploads.get(position);
         holder.textViewname.setText(upload.getName());
+        holder.textViewcontact.setText("Contact "+upload.get_name()+" on "+upload.get_phone());
         holder.textViewdesc.setText(upload.getDesc());
 //        holder.textViewcontact.setText("Please Contact "+name+" at "+phone);
         Picasso.with(mcontext).load(upload.getImageurl()).placeholder(R.mipmap.ic_launcher_round).fit().centerInside().into(holder.imageView);

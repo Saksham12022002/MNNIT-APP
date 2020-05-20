@@ -53,8 +53,8 @@ public class lost_0 extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_lost_0);
 
-        message = findViewById(R.id.textView3);
-        item_name=findViewById(R.id.editText6);
+        message = findViewById(R.id.textView6);
+        item_name=findViewById(R.id.editText9);
         progressBar = findViewById(R.id.progressBar5);
         final String phone = getIntent().getStringExtra("phone");
 
@@ -63,10 +63,10 @@ public class lost_0 extends AppCompatActivity {
         final String mail = getIntent().getStringExtra("mail");
 
         message.setText("Hey "+getIntent().getStringExtra("name")+"\nWe are sorry for your loss 😔\nBut you can find it here very soon 😃?");
-        upload = findViewById(R.id.button);
+        upload = findViewById(R.id.button4);
         String user = getIntent().getStringExtra("mail");
         imageView=findViewById(R.id.imageView3);
-        description=findViewById(R.id.editText5);
+        description=findViewById(R.id.editText10);
 
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads").child("lost");
         mDatabaseRef= FirebaseDatabase.getInstance().getReference("users");//.child(user);
@@ -144,21 +144,31 @@ public class lost_0 extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    Toast.makeText(lost_0.this, "Upload Successful", Toast.LENGTH_LONG).show();
+
                     String s1 = description.getText().toString().trim();
                     String s2 = item_name.getText().toString().trim();
 
                     final String phone = getIntent().getStringExtra("phone");
+                    final String name = getIntent().getStringExtra("name");
+
+                    if (s1.equals("")){
+                        s1 = "No Description given";
+                    }
+                    if (s2.equals("")){
+                        s2="No Name Given";
+                    }
+
 
                     Task<Uri> uriTask=taskSnapshot.getStorage().getDownloadUrl();
                     while (!uriTask.isSuccessful());
                     Uri downloadurl = uriTask.getResult();
                     assert downloadurl != null;
-                    uploadimage extra = new uploadimage(s2,s1,downloadurl.toString());
+                    uploadimage extra = new uploadimage(s2,s1,downloadurl.toString(),name,phone);
                     String key = mDatabaseRef.push().getKey();
                     assert key != null;
                     databaseReference.child("lost uploads").child(key).setValue(extra);
                     mDatabaseRef.child(phone).child("lost_uploads").child(key).setValue(extra);
+                    Toast.makeText(lost_0.this, "Upload Successful", Toast.LENGTH_LONG).show();
                     Intent i = new Intent(lost_0.this,all_lost_items.class);
                     startActivity(i);
                     finish();

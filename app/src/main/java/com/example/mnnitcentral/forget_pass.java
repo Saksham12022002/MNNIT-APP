@@ -45,6 +45,7 @@ public class forget_pass extends AppCompatActivity {
         progressBar=findViewById(R.id.progressBar);
 
         String phoneno = getIntent().getStringExtra("phone");
+        String passwd = getIntent().getStringExtra("passwd");
         welcome_message.setText("OTP Sent to Your Number "+phoneno);
 
         sendOTPtouser(phoneno);

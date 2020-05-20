@@ -138,7 +138,7 @@ public class login extends AppCompatActivity {
 
 
                 final String number=user.getText().toString().trim();
-                final String passwd = pass.getText().toString().trim();
+
                 Query check =ref.orderByChild("number").equalTo(number);
 
                 check.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -156,6 +156,7 @@ public class login extends AppCompatActivity {
                             intent.putExtra("name", name);
                             intent.putExtra("phone", phone);
                             intent.putExtra("mail", mail);
+                            intent.putExtra("passwd",storedpasswd);
                             startActivity(intent);
 
 
